@@ -1,8 +1,10 @@
 # Minimal NixOS VM Configuration
 
-This repository contains a minimal NixOS configuration optimized for virtual machines (specifically aarch64-linux on Apple Silicon via UTM).
+This repository contains a minimal NixOS configuration optimized for virtual machines. It supports both `aarch64-linux` (e.g., Apple Silicon via UTM) and `x86_64-linux`.
 
 ## Features
+
+- **Multi-Architecture Support**: Pre-configured for `aarch64-linux` and `x86_64-linux`.
 
 - **Base System**: Minimal NixOS (No GUI).
 - **Shell**: `zsh` with:
@@ -44,7 +46,11 @@ If you clone this repository directly inside a fresh NixOS VM:
 2.  Clone the repo: `git clone <repo-url>`
 3.  Apply the configuration:
     ```bash
-    sudo nixos-rebuild switch --flake .#nixos-vm
+    # For ARM64 (Apple Silicon)
+    sudo nixos-rebuild switch --flake .#nixos-vm-aarch64
+
+    # For x86_64
+    sudo nixos-rebuild switch --flake .#nixos-vm-x86_64
     ```
 
 ### 3. Deploy to a Brand New VM from Mac

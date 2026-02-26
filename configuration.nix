@@ -1,9 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, modulesPath, ... }:
 
 {
+
+  imports = [
+    "${modulesPath}/virtualisation/google-compute-image.nix"
+  ];
   # Minimal bootloader for VM
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
+  boot.loader.grub.device = "/dev/sda";
 
   # Define a dummy root filesystem (required for NixOS evaluation)
   fileSystems."/" = {
@@ -24,6 +28,7 @@
   ];
 
   # Basic user configuration
+  users.defaultUserShell = pkgs.zsh;
   users.users.nixos = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
@@ -33,8 +38,12 @@
   users.users.tanmay = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    initialPassword = "nixos";
-    shell = pkgs.zsh;
+    initialPassword = "tanmay";
+  };
+  users.users.tanmayvijay_google_com = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+    initialPassword = "tanmay";
   };
 
   programs.zsh.enable = true;
