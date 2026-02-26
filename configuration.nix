@@ -40,6 +40,11 @@
     extraGroups = [ "wheel" ];
     initialPassword = "tanmay";
   };
+  users.users.tanmayvijay = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+    initialPassword = "tanmay";
+  };
   users.users.tanmayvijay_google_com = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];

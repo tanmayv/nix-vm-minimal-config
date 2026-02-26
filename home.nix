@@ -5,8 +5,10 @@
     ./neovim
   ];
 
-  home.username = "tanmay";
-  home.homeDirectory = "/home/tanmay";
+  # Manage SSH authorized keys
+  home.file.".ssh/authorized_keys".text = ''
+    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGpiTTSEGM96e9/MbA/n+8twJTpbDj5qksrFOfGBTyVK tanmayvijay
+  '';
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release

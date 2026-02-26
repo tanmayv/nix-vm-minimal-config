@@ -18,6 +18,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.tanmay = import ./home.nix;
+          # home-manager.users.tanmayvijay = import ./home.nix;
           home-manager.users.tanmayvijay_google_com = import ./home.nix;
         }
       ];
