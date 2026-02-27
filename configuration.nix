@@ -72,7 +72,7 @@
   # Enable SSH for remote updates
   services.openssh = {
     enable = true;
-    ports = [ 22 2222 ]
+    ports = [ 22 2222 ];
     settings = {
       UsePAM = false; # Disable PAM for sshd; Needed for inter-vm ssh
       PasswordAuthentication = false;
