@@ -76,7 +76,7 @@
     settings = {
       UsePAM = false; # Disable PAM for sshd; Needed for inter-vm ssh
       PasswordAuthentication = false;
-    }
+    };
   };
 
 
