@@ -60,18 +60,25 @@
     initialPassword = "tanmay";
   };
 
+  users.users.bhaskardivya_google_com = {
+    isNormalUser = true;
+    createHome = false;
+    extraGroups = [ "wheel" ];
+    initialPassword = "bhaskar";
+  };
+
   programs.zsh.enable = true;
 
   # Enable SSH for remote updates
   services.openssh = {
     enable = true;
-    settings.PasswordAuthentication = true;
-  };
-  services.openssh = {
+    ports = [ 22 2222 ]
     settings = {
-      UsePAM = false; # Disable PAM for sshd
-    };
+      UsePAM = false; # Disable PAM for sshd; Needed for inter-vm ssh
+      PasswordAuthentication = false;
+    }
   };
+
 
   # PAM configuration is now ignored by sshd, but kept for other services.
   security.pam.services.sshd = {
@@ -83,33 +90,7 @@
     '';
   };
 
-  # users.users.tanmay = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ];
-  #   initialPassword = "tanmay";
-  # };
-  # users.users.tanmayvijay = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ];
-  #   initialPassword = "tanmay";
-  # };
-  # users.users.tanmayvijay_google_com = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ];
-  #   initialPassword = "tanmay";
-  # };
-  #
-  # programs.zsh.enable = true;
-  #
-  # # Allow passwordless sudo for the wheel group
-  # security.sudo.wheelNeedsPassword = false;
-  #
-  # # Enable SSH for remote updates
-  # services.openssh = {
-  #   enable = true;
-  #   settings.PasswordAuthentication = true;
-  # };
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking.firewall.allowedTCPPorts = [ 22  2222 ];
 
   # Enable Flakes and new Nix command
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
