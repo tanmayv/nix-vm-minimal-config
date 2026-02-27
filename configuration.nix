@@ -52,11 +52,13 @@
   #     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDjbiUiTpqo7wxD5zqbrwBUxWLWUH3LEUVZ05jQ1Vxb4 tanmay@nixos"
   #   ];
   # };
-  # users.users.tanmayvijay_google_com = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ];
-  #   initialPassword = "tanmay";
-  # };
+
+  users.users.tanmayvijay_google_com = {
+    isNormalUser = true;
+    createHome = false;
+    extraGroups = [ "wheel" ];
+    initialPassword = "tanmay";
+  };
 
   programs.zsh.enable = true;
 
