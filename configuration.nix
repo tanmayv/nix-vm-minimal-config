@@ -27,7 +27,7 @@
     substituters = [ "http://nixos-builder-test" ];
 
     # Put the content of /var/lib/nix-serve/public-key.pem here
-    trusted-public-keys = [ "my-vm-cache:xxxxxx..." ];
+    trusted-public-keys = [ "my-vm-cache:cPpNmyxpbkq9rD26vaEdoAiVL/Dv5qzy8fM7QVJyndw=%" ];
   };
 
   # Create the directory
