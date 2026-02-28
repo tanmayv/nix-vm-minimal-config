@@ -15,20 +15,6 @@
   #   fsType = "ext4";
   # };
 
-  services.nix-serve = {
-    enable = true;
-    port = 8888;
-    openFirewall = true;
-    secretKeyFile = "/var/lib/nix-serve/cache-key.pem";
-  };
-
-  nix.settings = {
-    # Replace with the actual IP or hostname of your VM
-    substituters = [ "http://nixos-builder-test" ];
-
-    # Put the content of /var/lib/nix-serve/public-key.pem here
-    trusted-public-keys = [ "my-vm-cache:cPpNmyxpbkq9rD26vaEdoAiVL/Dv5qzy8fM7QVJyndw=%" ];
-  };
 
   # Create the directory
   # sudo mkdir -p /var/lib/nix-serve
