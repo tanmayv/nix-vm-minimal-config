@@ -15,6 +15,35 @@
   #   fsType = "ext4";
   # };
 
+  services.nix-serve = {
+    enable = true;
+    port = 8888;
+    openFirewall = true;
+    secretKeyFile = "/var/lib/nix-serve/cache-key.pem";
+  };
+
+  nix.settings = {
+    # Replace with the actual IP or hostname of your VM
+    substituters = [ "http://nixos-builder-test" ];
+
+    # Put the content of /var/lib/nix-serve/public-key.pem here
+    trusted-public-keys = [ "my-vm-cache:xxxxxx..." ];
+  };
+
+  # Create the directory
+  # sudo mkdir -p /var/lib/nix-serve
+  # sudo chown nix-serve:nix-serve /var/lib/nix-serve
+  #
+  # # Generate the key pair
+  # # This creates a private key for the VM and prints the public key for your clients
+  # nix-store --generate-binary-cache-key my-vm-cache /var/lib/nix-serve/cache-key.pem /var/lib/nix-serve/public-key.pem
+  #
+  # # Make sure the service can read the private key
+  # sudo chmod 600 /var/lib/nix-serve/cache-key.pem
+  # sudo chown nix-serve:nix-serve /var/lib/nix-serve/cache-key.pem
+
+  nix.settings.trusted-users = [ "root" "@wheel" ];
+
   networking.hostName = "nixos";
 
   environment.systemPackages = with pkgs; [
@@ -91,7 +120,7 @@
     '';
   };
 
-  networking.firewall.allowedTCPPorts = [ 22  2222 ];
+  networking.firewall.allowedTCPPorts = [ 22 2222 ];
 
   # Enable Flakes and new Nix command
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
