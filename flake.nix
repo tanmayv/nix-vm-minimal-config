@@ -36,10 +36,15 @@
         nixos-gce-vm = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = commonModules ++ [
-            "${nixpkgs}/nixos/modules/virtualisation/google-compute-image.nix"
+            ./vm.nix
           ];
         };
-
+        nixos-gce-builder = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = commonModules ++ [
+            ./builder.nix
+          ];
+        };
         # Default to aarch64 for backward compatibility with update.sh
         nixos-vm = self.nixosConfigurations.nixos-vm-aarch64;
       };
