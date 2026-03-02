@@ -6,7 +6,7 @@
     substituters = [ "http://nixos-builder-test:8888" ];
 
     # Put the content of /var/lib/nix-serve/public-key.pem here
-    trusted-public-keys = [ "my-vm-cache:cPpNmyxpbkq9rD26vaEdoAiVL/Dv5qzy8fM7QVJyndw=" ];
+    trusted-public-keys = [ "my-vm-cache:Y7vErz9x7vIhSutAd3WN6/ke1Y9Vv74wpMQmHJFXZN4=" ];
   };
 
   systemd.services.nixos-upgrade-from-metadata = {
