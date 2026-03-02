@@ -39,9 +39,6 @@
     curl
   ];
 
-  fonts.packages = with pkgs; [
-    jetbrains-mono
-  ];
 
   # Basic user configuration
   users.defaultUserShell = pkgs.zsh;
